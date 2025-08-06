@@ -1,7 +1,7 @@
 # update_stock.py
 import requests
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -48,7 +48,7 @@ def get_stock_data():
 
 def update_readme():
     stock_info = get_stock_data()
-    now = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
 
     readme_content = f"""
 # TSLA (Tesla) Stock Tracker 📈
